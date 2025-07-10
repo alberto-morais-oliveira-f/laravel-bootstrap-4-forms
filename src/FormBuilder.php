@@ -281,10 +281,10 @@ class FormBuilder
         ]);
     }
 
-    private function renderLabel(): string
+    private function renderLabel(): ?string
     {
         extract($this->get('label', 'formInline', 'render'));
-
+        if (is_null($label)) return null;
         $class = in_array($render, ['checkbox', 'radio']) ? 'form-check-label' : '';
         if ($formInline) {
             $class = join(' ', [$class, 'mx-sm-2']);
